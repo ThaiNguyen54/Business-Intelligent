@@ -27,6 +27,30 @@
       <Name>Job Dim.dim</Name>
       <FullPath>Job Dim.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Job Type Dim.dim</Name>
+      <FullPath>Job Type Dim.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Job Ownership Dim.dim</Name>
+      <FullPath>Job Ownership Dim.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Job City Dim.dim</Name>
+      <FullPath>Job City Dim.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Job Industry Dim.dim</Name>
+      <FullPath>Job Industry Dim.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Race Dim.dim</Name>
+      <FullPath>Race Dim.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Gender Dim.dim</Name>
+      <FullPath>Gender Dim.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>

@@ -8,7 +8,7 @@
     <TransactionalDeployment>false</TransactionalDeployment>
     <PartitionDeployment>DeployPartitions</PartitionDeployment>
     <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
-    <ProcessingOption>Default</ProcessingOption>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
     <OutputScript></OutputScript>
     <ImpactAnalysisFile></ImpactAnalysisFile>
     <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
@@ -33,21 +33,63 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>2FTam4llVtizNqNogoyzONvllB8=6/15/2023 3:35:30 PM6/15/2023 3:03:11 PM</TimeStamp>
+        <TimeStamp>O68UUNzBXBAJJBokMe7cebDX+yc=6/16/2023 8:21:18 PM6/15/2023 3:03:11 PM</TimeStamp>
         <ID>
           <String>Applicant Dim</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>kREtX4+b97Bx7QUGk+bzlYP2S/k=6/15/2023 3:35:30 PM6/15/2023 3:03:12 PM</TimeStamp>
+        <TimeStamp>sgP7HORTYkpVER8468Pjv1XJmPU=6/16/2023 8:28:39 PM6/15/2023 3:03:12 PM</TimeStamp>
         <ID>
           <String>Job Dim</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>TC6X+Nlqaj9lAZsbQ0REjWkCy4E=6/16/2023 10:02:00 PM6/16/2023 9:28:28 PM</TimeStamp>
+        <ID>
+          <String>Job Type Dim</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>tllmg0f9cVJMxFTO8NHRMf2JOpw=6/16/2023 10:02:17 PM6/16/2023 10:02:00 PM</TimeStamp>
+        <ID>
+          <String>Job Ownership Dim</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>hrJagu56ZLQWESt7ceKBaBbBp9c=6/16/2023 10:02:45 PM6/16/2023 10:02:17 PM</TimeStamp>
+        <ID>
+          <String>Job City Dim</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>15NmziKEi4ZVZnBXUPkd5OYMWN4=6/16/2023 10:03:02 PM6/16/2023 10:02:45 PM</TimeStamp>
+        <ID>
+          <String>Job Industry Dim</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>2uzeFYvYJ+vmbLL1qTMtc8564gc=6/16/2023 10:03:21 PM6/16/2023 10:03:02 PM</TimeStamp>
+        <ID>
+          <String>Race Dim</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>MISFkysWUbM3yMmroFeffDzk4Gk=6/16/2023 10:04:02 PM6/16/2023 10:03:21 PM</TimeStamp>
+        <ID>
+          <String>Gender Dim</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>phF/JJ22eCfNFwtIQWlPKbQbAV8=6/15/2023 3:35:30 PM6/15/2023 3:03:11 PMBH3mNBsCo8riKnR4P2m8IgKceJY=6/15/2023 3:03:12 PM6/15/2023 3:03:11 PM</TimeStamp>
+        <TimeStamp>2rZRn/dpWK5xlP4m4/vebc4D2lU=6/16/2023 8:28:39 PM6/15/2023 3:03:11 PMtySUVLBv2vQIOAGP9knhjeu73wU=6/16/2023 6:36:51 PM6/15/2023 3:03:11 PM</TimeStamp>
         <ID>
           <String>Resume</String>
         </ID>
@@ -64,5 +106,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2023-06-15T15:26:27.463333Z</LastDeployed>
+  <LastDeployed>2023-06-16T15:30:06.226667Z</LastDeployed>
 </DeploymentSnapshot>

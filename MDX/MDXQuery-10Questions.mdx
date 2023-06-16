@@ -1,0 +1,8 @@
+--1.Which combination of job requirements 
+--(communication skills, education, experience, computer skills, etc.) 
+--has the highest callback rate per type of job 
+
+select [Job Dim].[Job Req Education].Members on columns,
+([Job Dim].[Job Type Id].Members ) on rows
+from [Resume]
+where [Measures].[Received Callback Count]
