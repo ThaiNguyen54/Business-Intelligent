@@ -1,0 +1,28 @@
+1.Which combination of job requirements (communication skills, education, experience, computer skills, etc.) has the highest callback rate per type of job ? (done)
+
+2. Is there a significant difference in callback rates based on race, gender, and resume quality combined per type of job ? (done)
+
+3. Are there any particular job industries or types that have a higher likelihood of having employment holes in the applicants' work history ? 
+
+4. How does the presence of certain special skills (such as programming languages or certifications) impact the likelihood of being called back for different job types ? 
+
+5. Are there any notable differences in callback rates for applicants with volunteer or military experience compared to those without ? (done)
+
+6. Is there a correlation between resume quality and the likelihood of receiving a callback? 
+-hint: By comparing the callback rates for different resume quality levels, you can determine if there is a relationship between resume quality and job prospects.
+
+7. What factors contribute to a high-quality resume?
+-hint: Analyze the characteristics of resumes with high ratings to identify common elements such as clear formatting, relevant work experience, educational achievements, or specific skills.
+
+8. Is there a disparity in callback rates based on "race" and "gender"?
+-hint: Compare callback rates for different racial and gender groups. Determine if there are any significant differences or biases in the likelihood of receiving a callback based on race or gender.
+
+9. Is there any correlation between the level of computer skills required and the job industry? Do certain industries tend to require more computer skills?
+# Question 9: Correlation between computer skills and job industry
+computer_skills_industry = df.groupby('job_industry')['job_req_computer'].mean()
+print(computer_skills_industry)
+
+10. Do applicants with higher levels of education tend to have higher resume quality?
+# Question 10: Relationship between education level and resume quality
+education_resume_quality = df.groupby('college_degree')['resume_quality'].mean()
+print(education_resume_quality)
