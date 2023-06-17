@@ -1,6 +1,8 @@
 -- Add foreign key Fact Table
 alter table fact add foreign key (job_ad_id) references job_dim(job_ad_id)
 alter table fact add foreign key (applicant_id) references applicant_dim(applicant_id)
+alter table fact add foreign key (resume_quality_id) references Resume_Quality(resume_quality_id)
+alter table fact add foreign key (received_callback_id) references Received_Callback(received_call_back_id)
 
 -- Add foreign key Applicant_Dim Table
 alter table applicant_dim add foreign key (race_id) references race_dim(race_id)
@@ -11,3 +13,5 @@ alter table job_dim add foreign key (job_city_id) references job_city_dim(job_ci
 alter table job_dim add foreign key (job_industry_id) references job_industry_dim(job_industry_id)
 alter table job_dim add foreign key (job_type_id) references job_type_dim(job_type_id)
 alter table job_dim add foreign key (job_ownership_id) references job_ownership_dim(job_ownership_id)
+
+

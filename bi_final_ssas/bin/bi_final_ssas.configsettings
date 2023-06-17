@@ -12,16 +12,16 @@
     </DataSources>
     <Dimensions>
       <Dimension>
+        <ID>Received Callback</ID>
+      </Dimension>
+      <Dimension>
         <ID>Applicant Dim</ID>
       </Dimension>
       <Dimension>
         <ID>Job Dim</ID>
       </Dimension>
       <Dimension>
-        <ID>Job Type Dim</ID>
-      </Dimension>
-      <Dimension>
-        <ID>Job Ownership Dim</ID>
+        <ID>Resume Quality</ID>
       </Dimension>
       <Dimension>
         <ID>Job City Dim</ID>
@@ -30,10 +30,16 @@
         <ID>Job Industry Dim</ID>
       </Dimension>
       <Dimension>
-        <ID>Race Dim</ID>
+        <ID>Job Ownership Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Job Type Dim</ID>
       </Dimension>
       <Dimension>
         <ID>Gender Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Race Dim</ID>
       </Dimension>
     </Dimensions>
     <Cubes>
