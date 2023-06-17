@@ -1,41 +1,94 @@
---1.Which combination of job requirements 
+--1. Which combination of job requirements 
 --(communication skills, education, experience, computer skills, etc.) 
 --has the highest callback rate per type of job 
+ SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
+ NON EMPTY { 
+ ([Job Dim].[Job Type].[Job Type].ALLMEMBERS * 
+ [Job Dim].[Job Req Communication].[Job Req Communication].ALLMEMBERS * 
+ [Job Dim].[Job Req Computer].[Job Req Computer].ALLMEMBERS * 
+ [Job Dim].[Job Req Education].[Job Req Education].ALLMEMBERS * 
+ [Job Dim].[Job Req Min Experience].[Job Req Min Experience].ALLMEMBERS * 
+ [Job Dim].[Job Req Organization].[Job Req Organization].ALLMEMBERS *
+ [Job Dim].[Job Req School].[Job Req School].ALLMEMBERS * 
+ [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) 
+ }
+ DIMENSION PROPERTIES MEMBER_CAPTION, 
+ MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE,
+ BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
 
--- 3
+-- 2. Is there a significant difference in callback rates based on race, gender, and resume quality combined per type of job ?
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
+NON EMPTY { 
+([Applicant Dim].[Race].[Race].ALLMEMBERS * 
+[Applicant Dim].[Gender].[Gender].ALLMEMBERS * 
+[Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS * 
+[Received Callback].[Received Callback].[Received Callback].ALLMEMBERS * 
+[Job Dim].[Job Type].[Job Type].ALLMEMBERS ) 
+} 
+DIMENSION PROPERTIES MEMBER_CAPTION, 
+MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, 
+BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+-- 3. Are there any particular job industries or types that have a higher likelihood of having employment holes in the applicants' work history ?
  SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
  NON EMPTY { ([Job Dim].[Job Type].[Job Type].ALLMEMBERS * [Job Dim].[Job Industry].[Job Industry].ALLMEMBERS * [Applicant Dim].[Employment Holes].[Employment Holes].ALLMEMBERS ) } 
  DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS 
  FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
 
--- 4
+-- 4. How does the presence of certain special skills impact the likelihood of being called back for different job types?
 SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
 NON EMPTY { ([Job Dim].[Job Type].[Job Type].ALLMEMBERS * [Applicant Dim].[Special Skills].[Special Skills].ALLMEMBERS * [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) } 
 DIMENSION PROPERTIES MEMBER_CAPTION, 
 MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
 
 
--- 5
+-- 5. Are there any notable differences in callback rates for applicants with volunteer or military experience compared to those without?
 SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
 NON EMPTY { ([Applicant Dim].[Volunteer].[Volunteer].ALLMEMBERS * [Applicant Dim].[Military].[Military].ALLMEMBERS * [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) } 
 DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
 
--- 6
+-- 6. Is there a correlation between resume quality and the likelihood of receiving a callback?
 SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
 NON EMPTY { ([Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS * [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) }
 DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
 
--- 8
+-- 7. What factors contribute to a high-quality resume?
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[Has Email Address].[Has Email Address].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[Honors].[Honors].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[Military].[Military].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[Special Skills].[Special Skills].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[Volunteer].[Volunteer].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[Worked During School].[Worked During School].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[Years College].[Years College].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[Years Experience].[Years Experience].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[College Degree].[College Degree].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[Computer Skills].[Computer Skills].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+
+
+-- 8. Is there a disparity in callback rates based on "race" and "gender"?
 SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS,
 NON EMPTY { ([Applicant Dim].[Race].[Race].ALLMEMBERS * [Applicant Dim].[Gender].[Gender].ALLMEMBERS * [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) } 
 DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
 
--- 9
+-- 9. Is there any correlation between the level of computer skills required and the job industry? Do certain industries tend to require more computer skills?
 SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
 NON EMPTY { ([Applicant Dim].[Computer Skills].[Computer Skills].ALLMEMBERS * [Job Dim].[Job Industry].[Job Industry].ALLMEMBERS ) } 
 DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
 
--- 10
+-- 10. Do applicants with higher levels of education tend to have higher resume quality?
 SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
 NON EMPTY { ([Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS * [Applicant Dim].[College Degree].[College Degree].ALLMEMBERS ) } 
 DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
