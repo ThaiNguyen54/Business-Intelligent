@@ -75,9 +75,6 @@ SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant
 SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, NON EMPTY { ([Applicant Dim].[Computer Skills].[Computer Skills].ALLMEMBERS * [Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
 
 
-
-
-
 -- 8. Is there a disparity in callback rates based on "race" and "gender"?
 SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS,
 NON EMPTY { ([Applicant Dim].[Race].[Race].ALLMEMBERS * [Applicant Dim].[Gender].[Gender].ALLMEMBERS * [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) } 
