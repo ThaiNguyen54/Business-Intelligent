@@ -2479,6 +2479,17 @@
                 </Source>
               </Source>
             </Measure>
+            <Measure>
+              <ID>Received Callback Id</ID>
+              <Name>Received Callback Id</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dbo_Fact</TableID>
+                  <ColumnID>received_callback_id</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
           </Measures>
           <StorageMode>Molap</StorageMode>
           <ProcessingMode>Regular</ProcessingMode>

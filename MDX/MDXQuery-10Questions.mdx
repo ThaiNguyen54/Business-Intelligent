@@ -2,14 +2,40 @@
 --(communication skills, education, experience, computer skills, etc.) 
 --has the highest callback rate per type of job 
 
---3
+-- 3
  SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
  NON EMPTY { ([Job Dim].[Job Type].[Job Type].ALLMEMBERS * [Job Dim].[Job Industry].[Job Industry].ALLMEMBERS * [Applicant Dim].[Employment Holes].[Employment Holes].ALLMEMBERS ) } 
  DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS 
  FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
 
- -- 4
-  SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
-  NON EMPTY { ([Job Dim].[Job Type].[Job Type].ALLMEMBERS * [Applicant Dim].[Special Skills].[Special Skills].ALLMEMBERS * [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) } 
-  DIMENSION PROPERTIES MEMBER_CAPTION, 
-  MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+-- 4
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
+NON EMPTY { ([Job Dim].[Job Type].[Job Type].ALLMEMBERS * [Applicant Dim].[Special Skills].[Special Skills].ALLMEMBERS * [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) } 
+DIMENSION PROPERTIES MEMBER_CAPTION, 
+MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+-- 5
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
+NON EMPTY { ([Applicant Dim].[Volunteer].[Volunteer].ALLMEMBERS * [Applicant Dim].[Military].[Military].ALLMEMBERS * [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) } 
+DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+-- 6
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
+NON EMPTY { ([Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS * [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) }
+DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+-- 8
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS,
+NON EMPTY { ([Applicant Dim].[Race].[Race].ALLMEMBERS * [Applicant Dim].[Gender].[Gender].ALLMEMBERS * [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) } 
+DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+-- 9
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
+NON EMPTY { ([Applicant Dim].[Computer Skills].[Computer Skills].ALLMEMBERS * [Job Dim].[Job Industry].[Job Industry].ALLMEMBERS ) } 
+DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+-- 10
+SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
+NON EMPTY { ([Resume Quality].[Resume Quality].[Resume Quality].ALLMEMBERS * [Applicant Dim].[College Degree].[College Degree].ALLMEMBERS ) } 
+DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS

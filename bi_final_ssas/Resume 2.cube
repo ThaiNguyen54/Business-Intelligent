@@ -551,6 +551,17 @@
             </Source>
           </Source>
         </Measure>
+        <Measure dwd:design-time-name="6f0a5fa1-a8ba-4932-968d-8627d6674257">
+          <ID>Received Callback Id</ID>
+          <Name>Received Callback Id</Name>
+          <Source dwd:design-time-name="7239835e-ae3e-403c-b79c-2c689b846266">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="95c7a074-71b4-4c63-8265-f63843e861f8">
+              <TableID>dbo_Fact</TableID>
+              <ColumnID>received_callback_id</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
       </Measures>
       <StorageMode>Molap</StorageMode>
       <ProcessingMode>Regular</ProcessingMode>
