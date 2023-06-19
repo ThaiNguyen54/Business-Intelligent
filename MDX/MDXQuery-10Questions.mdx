@@ -1,19 +1,8 @@
---1. Which combination of job requirements 
---(communication skills, education, experience, computer skills, etc.) 
---has the highest callback rate per type of job 
+--1. What is the distribution of job applicants across different races and genders? Are there any noticeable imbalances or biases?
  SELECT NON EMPTY { [Measures].[Fact Count] } ON COLUMNS, 
- NON EMPTY { 
- ([Job Dim].[Job Type].[Job Type].ALLMEMBERS * 
- [Job Dim].[Job Req Communication].[Job Req Communication].ALLMEMBERS * 
- [Job Dim].[Job Req Computer].[Job Req Computer].ALLMEMBERS * 
- [Job Dim].[Job Req Education].[Job Req Education].ALLMEMBERS * 
- [Job Dim].[Job Req Min Experience].[Job Req Min Experience].ALLMEMBERS * 
- [Job Dim].[Job Req Organization].[Job Req Organization].ALLMEMBERS *
- [Job Dim].[Job Req School].[Job Req School].ALLMEMBERS * 
- [Received Callback].[Received Callback].[Received Callback].ALLMEMBERS ) 
- }
+ NON EMPTY { ([Applicant Dim].[Race].[Race].ALLMEMBERS * [Applicant Dim].[Gender].[Gender].ALLMEMBERS ) } 
  DIMENSION PROPERTIES MEMBER_CAPTION, 
- MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE,
+ MEMBER_UNIQUE_NAME ON ROWS FROM [Resume] CELL PROPERTIES VALUE, 
  BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
 
 -- 2. Is there a significant difference in callback rates based on race, gender, and resume quality combined per type of job ?
