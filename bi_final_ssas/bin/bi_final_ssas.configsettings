@@ -54,6 +54,14 @@
               </Partition>
             </Partitions>
           </MeasureGroup>
+          <MeasureGroup>
+            <ID>Applicant Dim</ID>
+            <Partitions>
+              <Partition>
+                <ID>Applicant Dim</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
         </MeasureGroups>
       </Cube>
     </Cubes>
